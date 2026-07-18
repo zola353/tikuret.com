@@ -15,28 +15,40 @@
             --secondary-color: #18bc9c;
             --danger-color: #e74c3c;
             --light-bg: #f5f6fa;
-            --border-color: #c8d6e5;
+            --border-color: #7f8c8d; /* ለበለጠ ጥራት መስመሩ እንዲታይ ጠቆር ተደርጓል */
+            --accent-color: #2980b9;
         }
-        body {
+        
+        * {
+            box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
             margin: 0;
-            padding: 15px;
+            padding: 10px;
             background-color: var(--light-bg);
             color: #2d3436;
+            font-size: 14px;
         }
+
         .container {
             max-width: 1300px;
             margin: 0 auto;
             background: #ffffff;
-            padding: 25px;
+            padding: 15px;
             border-radius: 12px;
-            box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+            box-shadow: 0 5px 25px rgba(0,0,0,0.08);
         }
+
         h1, h2, h3 {
             color: var(--primary-color);
             text-align: center;
+            margin-top: 10px;
             margin-bottom: 20px;
+            font-size: 1.5rem;
         }
+
         .notice-banner {
             background-color: #ffeaa7;
             border-left: 5px solid #fdcb6e;
@@ -45,102 +57,179 @@
             border-radius: 4px;
             font-weight: bold;
         }
-        /* Login Styles */
+
+        /* Auth Screen */
         #authContainer {
             max-width: 400px;
-            margin: 100px auto;
-            padding: 30px;
+            margin: 60px auto;
+            padding: 25px;
             background: white;
             border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
             border: 1px solid var(--border-color);
         }
+
         .form-group {
             margin-bottom: 15px;
         }
+
         .form-group label {
             display: block;
             margin-bottom: 6px;
             font-weight: 600;
+            color: var(--primary-color);
         }
+
         .form-group input, .form-group select, .form-group textarea {
             width: 100%;
             padding: 10px;
             border: 1px solid var(--border-color);
             border-radius: 5px;
-            box-sizing: border-box;
             font-size: 14px;
+            outline: none;
+            transition: border-color 0.2s;
         }
+
+        .form-group input:focus, .form-group select:focus {
+            border-color: var(--secondary-color);
+        }
+
         .btn {
             background-color: var(--primary-color);
             color: white;
-            padding: 10px 20px;
+            padding: 12px 20px;
             border: none;
             border-radius: 5px;
             cursor: pointer;
             width: 100%;
             font-size: 15px;
             font-weight: bold;
-            transition: 0.3s;
+            transition: background-color 0.3s;
         }
-        .btn:hover { opacity: 0.9; }
+
+        .btn:hover { background-color: #34495e; }
         .btn-secondary { background-color: var(--secondary-color); }
+        .btn-secondary:hover { background-color: #16a085; }
         
         /* Dashboard Layout */
         #mainDashboard { display: none; }
+        
         .header-status {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
+            flex-direction: column;
+            gap: 10px;
             background: #dfe6e9;
-            padding: 10px 20px;
+            padding: 15px;
             border-radius: 6px;
             margin-bottom: 25px;
         }
+
+        .header-status-user {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid #b2bec3;
+            padding-top: 10px;
+        }
+
         .grid-layout {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: 1fr;
             gap: 20px;
             margin-bottom: 25px;
         }
+
         .card {
             background: white;
             border: 1px solid var(--border-color);
-            padding: 20px;
+            padding: 15px;
             border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.03);
         }
+
         .shape-info {
             background: #f8f9fa;
             padding: 10px;
             border-radius: 5px;
-            font-size: 12px;
+            font-size: 13px;
             border-left: 3px solid var(--secondary-color);
             margin-top: 10px;
+            margin-bottom: 10px;
         }
+
+        .table-responsive {
+            width: 100%;
+            overflow-x: auto;
+            margin-top: 15px;
+            border: 2px solid var(--border-color);
+            border-radius: 5px;
+        }
+
+        /* ቴብሉ ሙሉ በሙሉ በሮ እና በኮለመን መስመር እንዲኖረው የተደረገ ማሻሻያ */
         table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 15px;
-            font-size: 14px;
+            font-size: 13px;
+            min-width: 600px;
+            border: 2px solid var(--border-color);
         }
-        table, th, td { border: 1px solid var(--border-color); }
-        th, td { padding: 12px; text-align: left; }
-        th { background-color: var(--primary-color); color: white; }
+        
+        th, td { 
+            padding: 10px; 
+            text-align: left; 
+            border: 1px solid var(--border-color); /* ሙሉ የኮለመን እና የሮው መስመር */
+        }
+
+        th { 
+            background-color: var(--primary-color); 
+            color: white; 
+            font-weight: 600;
+            border: 1px solid var(--primary-color);
+        }
+
         tr:nth-child(even) { background-color: #f9f9f9; }
         
         .admin-section { display: none; }
+        
         .total-highlight {
-            font-size: 20px;
+            font-size: 16px;
             font-weight: bold;
-            color: var(--danger-color);
+            color: var(--primary-color);
             text-align: right;
-            margin-top: 20px;
+            margin-top: 12px;
+            padding: 12px;
+            background: #f8f9fa;
+            border-radius: 4px;
+            border: 1px solid var(--border-color);
         }
+
+        .grand-total-box {
+            font-size: 19px;
+            color: var(--danger-color);
+            border: 2px solid var(--danger-color);
+            background: #fff5f5;
+            padding: 12px;
+            margin-top: 15px;
+        }
+
         .flex-inputs {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 10px;
+        }
+
+        /* Responsive Breakpoints */
+        @media (min-width: 768px) {
+            body { padding: 20px; font-size: 15px; }
+            .container { padding: 25px; }
+            h1, h2, h3 { font-size: 1.75rem; }
+            .header-status { flex-direction: row; justify-content: space-between; align-items: center; }
+            .header-status-user { border-top: none; padding-top: 0; }
+            .grid-layout { grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); }
+            .card { padding: 20px; }
+            table { font-size: 14px; }
+            .total-highlight { font-size: 18px; }
+            .grand-total-box { font-size: 22px; }
         }
     </style>
 </head>
@@ -163,18 +252,20 @@
 <!-- 2. ዋናው መቆጣጠሪያ ዳሽቦርድ (Main Dashboard) -->
 <div id="mainDashboard" class="container">
     <div class="header-status">
-        <div><strong>ርዕስ፦</strong> የግንባታ ሳይት መረጃ መቆጣጠሪያ ሲስተም (በዲዛይኑ መሰረት ቋሚ ግባአት እና ተለዋዋጮ ገበያ ለግባአት የህንፃችን መረጃ)</div>
-        <div>የአሁኑ መለያ፦ <span id="userRoleDisplay" style="font-weight:bold; color:var(--secondary-color);"></span> 
-        <button onclick="logout()" style="margin-left:10px; padding:3px 8px; cursor:pointer;">ውጣ</button></div>
+        <div><strong>ርዕስ፦</strong> የግንባታ ሳይት መረጃ መቆጣጠሪያ ሲስተም (ቋሚ ግብአት እና ተለዋዋጭ ገበያ መረጃ)</div>
+        <div class="header-status-user">
+            <div>የአሁኑ መለያ፦ <span id="userRoleDisplay" style="font-weight:bold; color:var(--secondary-color);"></span></div>
+            <button onclick="logout()" style="margin-left:15px; padding:5px 12px; cursor:pointer; background:#b2bec3; border:none; border-radius:4px; font-weight:bold;">ውጣ</button>
+        </div>
     </div>
 
     <!-- አድሚን ብቻ አዲስ ሜምበር የሚፈጥርበት ክፍል -->
     <div class="card admin-section" style="margin-bottom: 25px; background: #edf2f7;">
         <h3>አዲስ ሜምበር መፍጠሪያ (Admin Only)</h3>
-        <div style="display: flex; gap: 15px; flex-wrap: wrap;">
-            <div class="form-group" style="flex:1;"><input type="text" id="newMemUser" placeholder="አዲስ ሜምበር ስም"></div>
-            <div class="form-group" style="flex:1;"><input type="password" id="newMemPass" placeholder="የመግቢያ ፓስዋርድ"></div>
-            <div><button class="btn btn-secondary" onclick="createNewMember()">ሜምበር ፍጠር</button></div>
+        <div style="display: flex; gap: 15px; flex-wrap: wrap; align-items: flex-end;">
+            <div class="form-group" style="flex:1; min-width:200px; margin-bottom:0;"><input type="text" id="newMemUser" placeholder="አዲስ ሜምበር ስም"></div>
+            <div class="form-group" style="flex:1; min-width:200px; margin-bottom:0;"><input type="password" id="newMemPass" placeholder="የመግቢያ ፓስዋርድ"></div>
+            <div style="flex:1; min-width:150px;"><button class="btn btn-secondary" onclick="createNewMember()">ሜምበር ፍጠር</button></div>
         </div>
     </div>
 
@@ -195,7 +286,7 @@
                 </select>
             </div>
             
-            <fieldset style="border: 1px solid var(--border-color); padding: 10px; border-radius: 5px;">
+            <fieldset style="border: 1px solid var(--border-color); padding: 12px; border-radius: 5px;">
                 <legend style="font-weight: bold;">በትክክል Area ያስገቡ (ማስያ)</legend>
                 <div class="form-group">
                     <label for="shapeSelect">1. የቅርፁን አይነት መለየት (Shape)፦</label>
@@ -207,9 +298,9 @@
                 </div>
                 <div id="shapeInfoBox" class="shape-info">ለአራት ማዕዘን: ርዝመት (Length) እና ጎን/ጎነ-ስፋት (Width) ያባዛል።</div>
                 
-                <div class="flex-inputs" style="margin-top:10px;">
-                    <div class="form-group"><label id="dim1Label">ርዝመት (m) / መሰረት</label><input type="number" id="dim1" value="1" step="0.01" oninput="calculateArea()"></div>
-                    <div class="form-group" id="dim2Group"><label id="dim2Label">ጎን (m) / ቁመት</label><input type="number" id="dim2" value="1" step="0.01" oninput="calculateArea()"></div>
+                <div class="flex-inputs">
+                    <div class="form-group"><label id="dim1Label">ርዝመት (m)</label><input type="number" id="dim1" value="1" step="0.01" oninput="calculateArea()"></div>
+                    <div class="form-group" id="dim2Group"><label id="dim2Label">ጎን (m)</label><input type="number" id="dim2" value="1" step="0.01" oninput="calculateArea()"></div>
                 </div>
                 <div class="form-group">
                     <label>የተሰላው Area (m²)፦</label>
@@ -230,7 +321,7 @@
         <!-- የእጅ ዋጋ እና የሬሽዎ ካርድ (Admin Section) -->
         <div class="card admin-section">
             <h2>3 & 6. የእጅ ዋጋ እና የግባአት ሬሽዎ ማዋቀሪያ</h2>
-            <h4 style="margin:5px 0;">የእጅ ዋጋ ውል ካርድ (አሀድ)</h4>
+            <h4 style="margin:5px 0; color: var(--accent-color);">የእጅ ዋጋ ውል ካርድ (አሀድ)</h4>
             <div class="flex-inputs">
                 <div class="form-group"><label>ፎርምወርክ ስራ ውል</label><input type="number" id="contractFw" value="300"></div>
                 <div class="form-group"><label>ብረት ስራ (በ ኪ.ግ)</label><input type="number" id="contractSteel" value="15"></div>
@@ -238,17 +329,26 @@
                 <div class="form-group"><label>ኮንክሪት ሙሌት (m³)</label><input type="number" id="contractConcM3" value="450"></div>
             </div>
 
-            <h4 style="margin:10px 0 5px 0;">በዲዛይኑ መሰረት የግባአት ሬሽዎ መጠን እና የገበያ ዋጋ</h4>
-            <table style="font-size:12px; margin:0;">
-                <thead><tr><th>ግብአት</th><th>ሬሽዎ መጠን</th><th>ወቅታዊ የገበያ ዋጋ (ብር)</th></tr></thead>
-                <tbody>
-                    <tr><td>አሸዋ (በ m³)</td><td><input type="number" id="ratioSand" value="1.5"></td><td><input type="number" id="marketSand" value="2400"></td></tr>
-                    <tr><td>ጠጠር (በ m³)</td><td><input type="number" id="ratioGravel" value="2.0"></td><td><input type="number" id="marketGravel" value="1900"></td></tr>
-                    <tr><td>ዜሮ ዜሮ (በ m³)</td><td><input type="number" id="ratioZeroZero" value="0.5"></td><td><input type="number" id="marketZeroZero" value="2100"></td></tr>
-                    <tr><td>ስሚንቶ (በኩንታል/m³)</td><td><input type="number" id="ratioCement" value="6.5"></td><td><input type="number" id="marketCement" value="1100"></td></tr>
-                    <tr><td>ብረት (በኪሎ)</td><td>-</td><td><input type="number" id="marketSteelPrice" value="135"></td></tr>
-                </tbody>
-            </table>
+            <!-- የአድሚን ዌስቴጅ ማባዣ ኤዲተር -->
+            <h4 style="margin:12px 0 5px 0; color: var(--danger-color);">የዌስቴጅ (Wastage Rate) ማባዣ ማስተካከያ</h4>
+            <div class="form-group">
+                <label for="wastageRateInput">ለዋየር ሽቦ፣ ስሚንቶ፣ ጠጠር፣ ሚስማር ዌስቴጅ ሬት (ምሳሌ፦ 0.05 ለ 5%)፦</label>
+                <input type="number" id="wastageRateInput" value="0.05" step="0.01" min="0" oninput="renderSelectedReport()">
+            </div>
+
+            <h4 style="margin:10px 0 5px 0; color: var(--accent-color);">በዲዛይኑ መሰረት የግባአት ሬሽዎ መጠን እና የገበያ ዋጋ</h4>
+            <div class="table-responsive">
+                <table style="font-size:12px; margin:0; min-width: 100%;">
+                    <thead><tr><th>ግብአት</th><th>ሬሽዎ መጠን</th><th>የገበያ ዋጋ (ብር)</th></tr></thead>
+                    <tbody>
+                        <tr><td>አሸዋ (በ m³)</td><td><input type="number" id="ratioSand" value="1.5"></td><td><input type="number" id="marketSand" value="2400"></td></tr>
+                        <tr><td>ጠጠር (በ m³)</td><td><input type="number" id="ratioGravel" value="2.0"></td><td><input type="number" id="marketGravel" value="1900"></td></tr>
+                        <tr><td>ዜሮ ዜሮ (በ m³)</td><td><input type="number" id="ratioZeroZero" value="0.5"></td><td><input type="number" id="marketZeroZero" value="2100"></td></tr>
+                        <tr><td>ስሚንቶ (በኩንታል)</td><td><input type="number" id="ratioCement" value="6.5"></td><td><input type="number" id="marketCement" value="1100"></td></tr>
+                        <tr><td>ብረት (በኪሎ)</td><td>-</td><td><input type="number" id="marketSteelPrice" value="135"></td></tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
 
         <!-- የኮለን መረጃ ማስገቢያ (Admin Section) -->
@@ -271,18 +371,18 @@
                     <input type="text" id="colName" required placeholder="ምሳሌ፦ ኮለን C-1, ሽሮል, ስላብ">
                 </div>
                 
-                <label style="font-weight:bold; display:block; margin-bottom:5px;">የብረት ፍላጎት ቋሚ ቋሚዎች (በቤርጋ)፦</label>
-                <div style="display:grid; grid-template-columns: repeat(4, 1fr); gap:5px; font-size:12px;">
-                    <div>ባለ 8: <input type="number" id="r8" value="0"></div>
-                    <div>ባለ 10: <input type="number" id="r10" value="0"></div>
-                    <div>ባለ 12: <input type="number" id="r12" value="0"></div>
-                    <div>ባለ 14: <input type="number" id="r14" value="0"></div>
-                    <div>ባለ 16: <input type="number" id="r16" value="0"></div>
-                    <div>ባለ 20: <input type="number" id="r20" value="0"></div>
-                    <div>ባለ 24: <input type="number" id="r24" value="0"></div>
+                <label style="font-weight:bold; display:block; margin-bottom:8px;">የብረት ፍላጎት ቋሚዎች (በቤርጋ)፦</label>
+                <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)); gap:8px; font-size:12px;">
+                    <div>ባለ 8: <input type="number" id="r8" value="0" style="width:100%; padding:4px;"></div>
+                    <div>ባለ 10: <input type="number" id="r10" value="0" style="width:100%; padding:4px;"></div>
+                    <div>ባለ 12: <input type="number" id="r12" value="0" style="width:100%; padding:4px;"></div>
+                    <div>ባለ 14: <input type="number" id="r14" value="0" style="width:100%; padding:4px;"></div>
+                    <div>ባለ 16: <input type="number" id="r16" value="0" style="width:100%; padding:4px;"></div>
+                    <div>ባለ 20: <input type="number" id="r20" value="0" style="width:100%; padding:4px;"></div>
+                    <div>ባለ 24: <input type="number" id="r24" value="0" style="width:100%; padding:4px;"></div>
                 </div>
 
-                <div class="form-group" style="margin-top:10px;">
+                <div class="form-group" style="margin-top:15px;">
                     <label for="gravelType">የጠጠር አይነት መምረጫ፦</label>
                     <select id="gravelType">
                         <option value="ጠጠር ዜሮዜሮ">ጠጠር ዜሮዜሮ</option>
@@ -300,7 +400,7 @@
         </div>
     </div>
 
-    <hr>
+    <hr style="border: 0; border-top: 1px solid var(--border-color); margin: 20px 0;">
 
     <!-- ሪፖርት እና መፈለጊያ ክፍል (ለአድሚን እና ለሜምበር ክፍት የሆነ) -->
     <div class="card" style="background: #f8f9fa;">
@@ -311,7 +411,7 @@
         </div>
 
         <!-- አድሚኑ ማሳሰቢያ የሚቀይርበት (Admin Only) -->
-        <div class="admin-section" class="form-group" style="max-width:500px; margin: 0 auto 20px auto;">
+        <div class="admin-section form-group" style="max-width:500px; margin: 0 auto 20px auto;">
             <label>ማሳሰቢያ ቀይር (Admin)፦</label>
             <div style="display:flex; gap:10px;">
                 <input type="text" id="noticeInput" placeholder="ማሳሰቢያ እዚህ ይጻፉ...">
@@ -323,9 +423,9 @@
         <fieldset style="border:1px solid var(--border-color); padding:15px; margin-bottom:20px; border-radius:5px;">
             <legend style="font-weight:bold;">8. የነበረውን ወጪ በጊዜ መፈለጊያ (ከ-እስከ ቀን)</legend>
             <div style="display:flex; gap:15px; flex-wrap:wrap; align-items:flex-end;">
-                <div class="form-group" style="margin:0;"><label>ከ ቀን/ወር/ዓ.ም</label><input type="date" id="filterStartDate"></div>
-                <div class="form-group" style="margin:0;"><label>እስከ ቀን/ወር/ዓ.ም</label><input type="date" id="filterEndDate"></div>
-                <div><button class="btn" style="width:auto; padding:10px 25px;" onclick="fetchDataFromFirebase()">ፈልግ / አድስ</button></div>
+                <div class="form-group" style="margin:0; flex:1; min-width:140px;"><label>ከ ቀን</label><input type="date" id="filterStartDate"></div>
+                <div class="form-group" style="margin:0; flex:1; min-width:140px;"><label>እስከ ቀን</label><input type="date" id="filterEndDate"></div>
+                <div style="flex:1; min-width:120px;"><button class="btn" style="padding:11px;" onclick="fetchDataFromFirebase()">ፈልግ / አድስ</button></div>
             </div>
         </fieldset>
 
@@ -339,31 +439,42 @@
         <div id="reportDisplayArea" style="display:none;">
             <h3>የተመረጠው አካል፦ <span id="targetTitle" style="color:var(--secondary-color);"></span></h3>
             <p id="driveDownloadArea" style="text-align:center; display:none;">
-                <a id="driveDownloadBtn" href="#" target="_blank" class="btn btn-secondary" style="width:auto; display:inline-block; padding:5px 15px; text-decoration:none;">የጉግል ድራይቭ ፋይል አውርድ (Download)</a>
+                <a id="driveDownloadBtn" href="#" target="_blank" class="btn btn-secondary" style="width:auto; display:inline-block; padding:6px 15px; text-decoration:none;">የጉግል ድራይቭ ፋይል አውርድ (Download)</a>
             </p>
 
-            <table>
-                <thead>
-                    <tr>
-                        <th>የግብአት ስም / የስራ ዝርዝር</th>
-                        <th>የሚያስፈልግ መጠን (በቤርጋ / በ m³)</th>
-                        <th>የሚያስፈልግ መጠን (በኪሎግራም / አሃድ)</th>
-                        <th>የአሃድ ዋጋ (ብር)</th>
-                        <th>ከረንት (ወቅታዊ) ዋጋ (ብር)</th>
-                    </tr>
-                </thead>
-                <tbody id="reportTableBody">
-                    <!-- Dynamic Data Goes Here -->
-                </tbody>
-            </table>
-            <div class="total-highlight" id="reportGrandTotal">ጠቅላላ የወቅቱ ዋጋ ድምር፦ 0.00 ብር</div>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>የግብአት ስም / የስራ ዝርዝር</th>
+                            <th>የሚያስፈልግ መጠን (በቤርጋ / በ m³)</th>
+                            <th>የሚያስፈልግ መጠን (በኪሎግራም / አሃድ)</th>
+                            <th>የአሃድ ዋጋ (ብር)</th>
+                            <th>ጠቅላላ ዋጋ (ብር)</th>
+                        </tr>
+                    </thead>
+                    <tbody id="reportTableBody">
+                        <!-- Dynamic Data Goes Here -->
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- አጠቃላይ የቁሳቁሶች (የብረት፣ የአሸዋ፣ የጠጠር እና የስሚንቶ) ማጠቃለያ ሳጥን -->
+            <div id="materialsSummaryArea" class="total-highlight" style="color: var(--accent-color); margin-top:15px; text-align:left; font-size:14px; line-height:1.7;">
+                <!-- ማጠቃለያው በጃቫስክሪፕት እዚህ ይገባል -->
+            </div>
+            
+            <div id="wastageDisplayBox" class="total-highlight" style="color: #d35400; text-align:right; font-size:15px;">
+                <!-- የዌስቴጅ ስሌት እዚህ ይገባል -->
+            </div>
+
+            <div class="total-highlight grand-total-box" id="reportGrandTotal">ጠቅላላ የወቅቱ ዋጋ ድምር፦ 0.00 ብር</div>
         </div>
     </div>
 </div>
 
 <script>
-    // 8. የኮንስትራክሽን ወጪዎች መለያ በ Firebase Realtime Database
-    // ----------------------------------------------------
+    // Firebase Configurations
     const firebaseConfig = {
         apiKey: "AIzaSyCnueA0YJM1y7eImDcxLHFcEXACSwHTovQ",
         authDomain: "tikuret-trading.firebaseapp.com",
@@ -384,12 +495,12 @@
     let dbFetchedData = {}; 
     let currentLoggedUser = null;
 
-    // 9. የቁጥር አቀማመጥ ፎርማት ማስተካከያ (Decimal & Comma Separator e.g., 100,000.50)
+    // Number formatter
     function formatNumber(num) {
         return Number(num).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
     }
 
-    // 1. መግቢያ ገፅ (Login Logic)
+    // Login Logic
     function handleLogin() {
         const user = document.getElementById('loginUser').value.trim();
         const pass = document.getElementById('loginPass').value;
@@ -397,7 +508,6 @@
         if(user === 'admin' && pass === 'admin123') {
             launchDashboard('admin');
         } else {
-            // በFirebase ውስጥ የተፈጠሩ ሜምበሮችን ያረጋግጣል
             db.ref('construction_system/members/' + user).once('value', snapshot => {
                 const memData = snapshot.val();
                 if(memData && memData.password === pass) {
@@ -421,9 +531,7 @@
             document.querySelectorAll('.admin-section').forEach(el => el.style.display = 'none');
         }
 
-        // መሰረታዊ የፎርምወርክ ስሌት ማስጀመር
         loadSelectedFormwork();
-        // መረጃዎችን ከ Firebase መጫን
         fetchDataFromFirebase();
         listenToNotice();
     }
@@ -432,7 +540,6 @@
         location.reload();
     }
 
-    // አድሚን ሜምበር መፍጠሪያ
     function createNewMember() {
         const username = document.getElementById('newMemUser').value.trim();
         const password = document.getElementById('newMemPass').value;
@@ -446,7 +553,7 @@
         });
     }
 
-    // 2. የፎርምወርክ ቅርፅ እና አሪያ ማስያ ማብራሪያዎች መቀያየሪያ
+    // Area Calculation Functions
     function toggleShapeInputs() {
         const shape = document.getElementById('shapeSelect').value;
         const infoBox = document.getElementById('shapeInfoBox');
@@ -503,14 +610,15 @@
         const price = parseFloat(document.getElementById('fwPriceInput').value) || 0;
         const total = area * price;
         document.getElementById('totalFwLaborDisplay').value = formatNumber(total) + " ብር";
+        renderSelectedReport(); 
     }
 
-    // 4 & 5. መረጃዎችን ወደ Firebase Realtime Database መላኪያ
+    // Save Data to Firebase
     function saveDataToFirebase(e) {
         e.preventDefault();
         const floor = document.getElementById('colFloorGroup').value;
         const name = document.getElementById('colName').value.trim();
-        const timestamp = new Date().toISOString().split('T')[0]; // የቀን መቆጣጠሪያ ፎርማት
+        const timestamp = new Date().toISOString().split('T')[0];
 
         const dataPayload = {
             floorGroup: floor,
@@ -537,7 +645,7 @@
         });
     }
 
-    // 8. መረጃዎችን በጊዜ ገደብ መፈለጊያ እና መጫኛ
+    // Fetch Data with Filter
     function fetchDataFromFirebase() {
         const start = document.getElementById('filterStartDate').value;
         const end = document.getElementById('filterEndDate').value;
@@ -550,7 +658,6 @@
             for(let key in dbFetchedData) {
                 const record = dbFetchedData[key];
                 
-                // የጊዜ ፊልተር ፍተሻ
                 if(start && record.date < start) continue;
                 if(end && record.date > end) continue;
 
@@ -563,7 +670,7 @@
         });
     }
 
-    // ማሳሰቢያ መቆጣጠሪያ
+    // Notice functions
     function updateNotice() {
         const txt = document.getElementById('noticeInput').value;
         db.ref('construction_system/notice').set(txt);
@@ -581,7 +688,7 @@
         });
     }
 
-    // 7. ዋናው ሪፖርት ማሳያ ማውጫ ሰንጠረዥ
+    // 7. Render Selected Report Table & Logic
     function renderSelectedReport() {
         const key = document.getElementById('reportSelector').value;
         const displayArea = document.getElementById('reportDisplayArea');
@@ -595,7 +702,6 @@
         const record = dbFetchedData[key];
         document.getElementById('targetTitle').innerText = `${record.floorGroup} - ${record.elementName} (${record.date})`;
 
-        // 9. የጉግል ድራይቭ ሊንክ እና ዳውንሎድ ማረጋገጫ
         const driveBtnContainer = document.getElementById('driveDownloadArea');
         if(record.driveLink) {
             driveBtnContainer.style.display = 'block';
@@ -607,34 +713,44 @@
         const tbody = document.getElementById('reportTableBody');
         tbody.innerHTML = '';
 
-        // የአድሚን ወቅታዊ የገበያ ዋጋዎች እና ሬሽዮዎች
+        // Admin Market Values
         const pSand = parseFloat(document.getElementById('marketSand').value) || 0;
         const pGravel = parseFloat(document.getElementById('marketGravel').value) || 0;
         const pZZ = parseFloat(document.getElementById('marketZeroZero').value) || 0;
         const pCement = parseFloat(document.getElementById('marketCement').value) || 0;
         const pSteel = parseFloat(document.getElementById('marketSteelPrice').value) || 0;
 
+        // Ratios
         const rSand = parseFloat(document.getElementById('ratioSand').value) || 0;
         const rGravel = parseFloat(document.getElementById('ratioGravel').value) || 0;
         const rZZ = parseFloat(document.getElementById('ratioZeroZero').value) || 0;
         const rCement = parseFloat(document.getElementById('ratioCement').value) || 0;
 
-        // የውል እጅ ዋጋዎች
+        // Contract Labor Prices
         const lFw = parseFloat(document.getElementById('contractFw').value) || 0;
         const lSteel = parseFloat(document.getElementById('contractSteel').value) || 0;
         const lConcM3 = parseFloat(document.getElementById('contractConcM3').value) || 0;
 
-        let grandTotal = 0;
+        // Wastage Multiplier from Admin Input
+        const wastageRate = parseFloat(document.getElementById('wastageRateInput').value) || 0;
 
-        // ሀ. የብረት ቋሚዎች ስሌት
-        let totalSteelWeight = 0;
+        let totalBeforeWastage = 0;
+
+        // 1. የብረት ስሌት (Individual Rebars)
+        let grandTotalRebarBars = 0;
+        let grandTotalRebarKg = 0;
+        let grandTotalRebarCost = 0;
+
         for(let size in record.rebars) {
             const qty = record.rebars[size];
             if(qty > 0) {
                 const kgWeight = qty * rebarUnitWeights[size];
-                totalSteelWeight += kgWeight;
                 const cost = kgWeight * pSteel;
-                grandTotal += cost;
+                
+                grandTotalRebarBars += qty;
+                grandTotalRebarKg += kgWeight;
+                grandTotalRebarCost += cost;
+                totalBeforeWastage += cost;
 
                 tbody.innerHTML += `<tr>
                     <td>ብረት ባለ ${size} ∅ (ቋሚ)</td>
@@ -646,47 +762,84 @@
             }
         }
 
-        // ለ. የብረት ስራ እጅ ዋጋ (በኪሎ ግራም ውል)
-        if(totalSteelWeight > 0) {
-            const steelLaborCost = totalSteelWeight * lSteel;
-            grandTotal += steelLaborCost;
+        // 2. የብረት ስራ እጅ ዋጋ
+        if(grandTotalRebarKg > 0) {
+            const steelLaborCost = grandTotalRebarKg * lSteel;
+            totalBeforeWastage += steelLaborCost;
             tbody.innerHTML += `<tr>
                 <td>የብረት ስራ የእጅ ዋጋ (ውል)</td>
                 <td>-</td>
-                <td>${formatNumber(totalSteelWeight)} ኪ.ግ</td>
+                <td>${formatNumber(grandTotalRebarKg)} ኪ.ግ</td>
                 <td>${formatNumber(lSteel)} ብር/ኪ.ግ</td>
                 <td><strong>${formatNumber(steelLaborCost)} ብር</strong></td>
             </tr>`;
         }
 
-        // ሐ. ጠጠር፣ አሸዋ፣ ዜሮ ዜሮ፣ ስሚንቶ (ሬሽዮ መሠረት ያደረገ ማስላት)
+        // 3. የቁስ ግብአቶች ድምር ዋጋ
         // አሸዋ
-        const sandCost = rSand * pSand; grandTotal += sandCost;
+        const sandCost = rSand * pSand; totalBeforeWastage += sandCost;
         tbody.innerHTML += `<tr><td>አሸዋ ፍላጎት</td><td>${rSand} m³</td><td>-</td><td>${formatNumber(pSand)} ብር</td><td><strong>${formatNumber(sandCost)} ብር</strong></td></tr>`;
         
         // ጠጠር አይነት መለየት
+        let activeGravelName = '';
+        let activeGravelQty = 0;
+        let activeGravelCost = 0;
+
         if(record.gravelType === 'ጠጠር ዜሮዜሮ') {
-            const zzCost = rZZ * pZZ; grandTotal += zzCost;
-            tbody.innerHTML += `<tr><td>ዜሮ ዜሮ ጠጠር</td><td>${rZZ} m³</td><td>-</td><td>${formatNumber(pZZ)} ብር</td><td><strong>${formatNumber(zzCost)} ብር</strong></td></tr>`;
+            activeGravelName = 'ዜሮ ዜሮ ጠጠር';
+            activeGravelQty = rZZ;
+            activeGravelCost = rZZ * pZZ;
+            totalBeforeWastage += activeGravelCost;
+            tbody.innerHTML += `<tr><td>ዜሮ ዜሮ ጠጠር</td><td>${rZZ} m³</td><td>-</td><td>${formatNumber(pZZ)} ብር</td><td><strong>${formatNumber(activeGravelCost)} ብር</strong></td></tr>`;
         } else {
-            const grCost = rGravel * pGravel; grandTotal += grCost;
-            tbody.innerHTML += `<tr><td>ጠጠር ዜሮ 2</td><td>${rGravel} m³</td><td>-</td><td>${formatNumber(pGravel)} ብር</td><td><strong>${formatNumber(grCost)} ብር</strong></td></tr>`;
+            activeGravelName = 'ጠጠር ዜሮ 2';
+            activeGravelQty = rGravel;
+            activeGravelCost = rGravel * pGravel;
+            totalBeforeWastage += activeGravelCost;
+            tbody.innerHTML += `<tr><td>ጠጠር ዜሮ 2</td><td>${rGravel} m³</td><td>-</td><td>${formatNumber(pGravel)} ብር</td><td><strong>${formatNumber(activeGravelCost)} ብር</strong></td></tr>`;
         }
 
         // ስሚንቶ
-        const cementCost = rCement * pCement; grandTotal += cementCost;
+        const cementCost = rCement * pCement; totalBeforeWastage += cementCost;
         tbody.innerHTML += `<tr><td>ስሚንቶ ፍላጎት</td><td>-</td><td>${rCement} ኩንታል</td><td>${formatNumber(pCement)} ብር</td><td><strong>${formatNumber(cementCost)} ብር</strong></td></tr>`;
 
-        // መ. የኮንክሪት ሙሌት እና የፎርምወርክ እጅ ዋጋዎች ማጠቃለያ
-        grandTotal += lConcM3;
+        // 4. የኮንክሪት ሙሌት እና ፎርምወርክ እጅ ዋጋ
+        totalBeforeWastage += lConcM3;
         tbody.innerHTML += `<tr><td>ኮንክሪት ሙሌት እጅ ዋጋ (m³)</td><td>1.00 m³</td><td>-</td><td>${formatNumber(lConcM3)} ብር</td><td><strong>${formatNumber(lConcM3)} ብር</strong></td></tr>`;
 
         const currentCalculatedFwLabor = parseFloat(document.getElementById('totalFwLaborDisplay').value.replace(/,/g, '')) || 0;
-        grandTotal += currentCalculatedFwLabor;
+        totalBeforeWastage += currentCalculatedFwLabor;
         tbody.innerHTML += `<tr><td>የፎርምወርክ የእጅ ዋጋ (ከተሰላው)</td><td>-</td><td>-</td><td>ጠቅላላ ውል</td><td><strong>${formatNumber(currentCalculatedFwLabor)} ብር</strong></td></tr>`;
 
-        // 9. ጠቅላላ የወቅቱ ዋጋ ድምር ማሳያ
-        document.getElementById('reportGrandTotal').innerText = `ጠቅላላ የወቅቱ የቁስ እና የእጅ ዋጋ ድምር፦ ${formatNumber(grandTotal)} ብር`;
+        // 5. የዌስቴጅ ስሌት (Wastage Calculation)
+        const wastageValue = totalBeforeWastage * wastageRate;
+        const grandTotal = totalBeforeWastage + wastageValue;
+
+        // 6. የቁሳቁሶች ጠቅላላ ማጠቃለያ (ብረት፣ ጠጠር፣ አሸዋ፣ ስሚንቶ) ማሳያ ማሻሻያ
+        const materialsSummaryArea = document.getElementById('materialsSummaryArea');
+        materialsSummaryArea.innerHTML = `
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
+                <div>
+                    <strong style="color: var(--primary-color); border-bottom: 2px solid var(--secondary-color); display:block; margin-bottom:5px;">🏗️ የብረት ጠቅላላ ማጠቃለያ</strong>
+                    • ድምር ቤርጋ፦ ${grandTotalRebarBars} ቤርጋ<br>
+                    • ድምር ኪሎግራም፦ ${formatNumber(grandTotalRebarKg)} ኪ.ግ<br>
+                    • ድምር የብረት ዋጋ፦ ${formatNumber(grandTotalRebarCost)} ብር
+                </div>
+                <div>
+                    <strong style="color: var(--primary-color); border-bottom: 2px solid var(--secondary-color); display:block; margin-bottom:5px;">🪵 የሌሎች ቁሳቁሶች ማጠቃለያ</strong>
+                    • <strong>ጠጠር (${activeGravelName})፦</strong> ${activeGravelQty} m³ (ዋጋ፦ ${formatNumber(activeGravelCost)} ብር)<br>
+                    • <strong>አሸዋ፦</strong> ${rSand} m³ (ዋጋ፦ ${formatNumber(sandCost)} ብር)<br>
+                    • <strong>ስሚንቶ፦</strong> ${rCement} ኩንታል (ዋጋ፦ ${formatNumber(cementCost)} ብር)
+                </div>
+            </div>
+        `;
+
+        // የዌስቴጅ ሪፖርት ማሳያ
+        const wastageDisplayBox = document.getElementById('wastageDisplayBox');
+        wastageDisplayBox.innerHTML = `የዌስቴጅ ወጪ (ለዋየር ሽቦ፣ ስሚንቶ፣ ጠጠር፣ ሚስማር) [${(wastageRate * 100).toFixed(1)}%]፦ <strong>${formatNumber(wastageValue)} ብር</strong>`;
+
+        // ጠቅላላ ድምር ማሳያ
+        document.getElementById('reportGrandTotal').innerText = `ጠቅላላ የወቅቱ የቁስ እና የእጅ ዋጋ ድምር (ከነዌስቴጁ)፦ ${formatNumber(grandTotal)} ብር`;
     }
 </script>
 </body>
